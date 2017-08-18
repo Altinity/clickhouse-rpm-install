@@ -110,7 +110,7 @@ First of all, ensure we have ClickHouse packages available for installation
 sudo yum list 'clickhouse*'
 ```
 
-ClickHouse packages should be listed, something like this:
+ClickHouse packages should be listed as available, something like this:
 ``` bash
 Available Packages
 clickhouse-client.x86_64        1.1.54276-3.el7 altinity_clickhouse
@@ -157,7 +157,7 @@ Connected to ClickHouse server version 1.1.54276.
 
 ```
 
-Well, all loooks fine and ClickHouse installed from RPM packages!
+Well, all looks fine and ClickHouse installed from RPM packages!
 
 ## Script-based
 However, packagecloud.io provides nice and user-friendly way to add repos with their script. All looks like some kind of magic.
@@ -165,7 +165,7 @@ However, packagecloud.io provides nice and user-friendly way to add repos with t
 ### Install script
 Ensure `curl` is installed on the system
 ```bash
-sudo yum install curl
+sudo yum install -y curl
 ```
 
 Let's run installation shell-script, provided by packagecloud.io
