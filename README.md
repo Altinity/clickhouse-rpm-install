@@ -11,10 +11,10 @@
       * [EL6 repo file](#el6-repo-file)
       * [EL7 repo file](#el7-repo-file)
     * [Update cache](#update-cache)
-    * [Install packages](#install-packages)
+    * [Install packages manually](#install-packages-manually)
   * [Script-based](#script-based)
     * [Install script](#install-script)
-    * [Install packages](#install-packages)
+    * [Install packages after script](#install-packages-after-script)
   * [Conclusion](#conclusion)
 
 ------
@@ -36,7 +36,7 @@ We'll need two packages installed beforehands:
   * yum-utils - contains tools for handling source RPMs
 
 ```bash
-sudo yum install pygpgme yum-utils
+sudo yum install -y pygpgme yum-utils
 ```
 
 ### Create required files
@@ -103,7 +103,61 @@ After repo files created, let's update `yum`'s cache with packges from newly add
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='altinity_clickhouse'
 ```
 
-### Install packages
+### Install packages manually
+First of all, ensure we have ClickHouse packages available for installation
+
+```bash
+sudo yum list 'clickhouse*'
+```
+
+ClickHouse packages should be listed, something like this:
+``` bash
+Available Packages
+clickhouse-client.x86_64        1.1.54276-3.el7 altinity_clickhouse
+clickhouse-compressor.x86_64    1.1.54276-3.el7 altinity_clickhouse
+clickhouse-debuginfo.x86_64     1.1.54276-3.el7 altinity_clickhouse
+clickhouse-server.x86_64        1.1.54276-3.el7 altinity_clickhouse
+clickhouse-server-common.x86_64 1.1.54276-3.el7 altinity_clickhouse
+```
+
+Now let's install ClickHouse
+```bash
+sudo yum install -y 'clickhouse*'
+```
+
+and verify it is listed as installed
+```bash
+ sudo yum list installed 'clickhouse*'
+```
+
+ClickHouse packages should be listed as installed, something like this:
+```bash
+Installed Packages
+clickhouse-client.x86_64        1.1.54276-3.el7 @altinity_clickhouse
+clickhouse-compressor.x86_64    1.1.54276-3.el7 @altinity_clickhouse
+clickhouse-debuginfo.x86_64     1.1.54276-3.el7 @altinity_clickhouse
+clickhouse-server.x86_64        1.1.54276-3.el7 @altinity_clickhouse
+clickhouse-server-common.x86_64 1.1.54276-3.el7 @altinity_clickhouse
+```
+
+Ensure ClicKhouse server is running
+```bash
+sudo /etc/init.d/clickhouse-server restart
+```
+
+And connect to it with clickhouse-client
+```bash
+clickhouse-client
+
+ClickHouse client version 1.1.54276.
+Connecting to localhost:9000.
+Connected to ClickHouse server version 1.1.54276.
+
+:)
+
+```
+
+Well, all loooks fine and ClickHouse installed from RPM packages!
 
 ## Script-based
 However, packagecloud.io provides nice and user-friendly way to add repos with their script. All looks like some kind of magic.
@@ -119,7 +173,8 @@ Let's run installation shell-script, provided by packagecloud.io
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo bash
 ```
 
-### Install packages
+### Install packages after script
+Packages can be installed the same way as in section [Install packages manually](#install-packages-manually)
 
 ## Conclusion
 Now we have ClickHouse RPM packages available for easy installation.
