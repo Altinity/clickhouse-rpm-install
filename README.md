@@ -27,11 +27,12 @@ In order to install ClickHouse RPM packages from [packagecloud.io](#https://pack
 
 In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add packagecloud.io repository description in there.
 
-This can be done either [manually](#manual-installation) or via [script](#script-based-installation), provided by packagecloud.io. In any case, as a result, we'll have ClickHouse packages available for installation via `yum`
-Let's start with script-based installation, since this approach seems easier.
+This can be done either [manually](#manual-installation) or via [script](#script-based-installation), provided by packagecloud.io. In any case, as a result, we'll have ClickHouse packages available for installation via `yum`.
+
+Let's start with script-based installation, since this approach looks like more user-friendly.
 
 ## Script-based installation
-For our convenience, packagecloud.io provides nice and user-friendly way to add repos with their script. All looks like some kind of magic.
+For our convenience, packagecloud.io provides nice and user-friendly way to add repos with their script. We'll need to download and run packagecloud's bash script, which will do all required steps.
 
 ### Install script
 Ensure `curl` is installed on the system
@@ -39,7 +40,7 @@ Ensure `curl` is installed on the system
 sudo yum install -y curl
 ```
 
-Let's run installation shell-script, provided by packagecloud.io
+Let's download and run installation shell-script, provided by packagecloud.io
 ```bash
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo bash
 ```
