@@ -22,7 +22,7 @@
 
 ## Introduction
 
-All instructions in this manual were tested on Centos 6.9 and CentOS 7.3. 
+All instructions in this manual were tested on Centos 6.10 and CentOS 7.5. 
 In order to install ClickHouse RPM packages from [packagecloud.io](#https://packagecloud.io) repository, we need to register it (repo) with our `yum`, making `yum` avare of additional packages installable from packagecloud.io. 
 
 In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add packagecloud.io repository description in there.
