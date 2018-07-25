@@ -66,7 +66,7 @@ clickhouse-server-common.x86_64         18.1.0-1.el7             Altinity_clickh
 clickhouse-test.x86_64                  18.1.0-1.el7             Altinity_clickhouse
 ```
 
-There are multiple packages available (new versions and old tools as well), some of the are deprecated already, so there is no need to install all of them.
+There are multiple packages available (new versions and old tools as well), some of them are deprecated already, so there is no need to install all available RPMs.
 
 Now let's install ClickHouse main parts - server and client applications.
 ```bash
