@@ -56,16 +56,21 @@ sudo yum list 'clickhouse*'
 ClickHouse packages should be listed as available, something like this:
 ``` bash
 Available Packages
-clickhouse-client.x86_64        1.1.54276-3.el7 altinity_clickhouse
-clickhouse-compressor.x86_64    1.1.54276-3.el7 altinity_clickhouse
-clickhouse-debuginfo.x86_64     1.1.54276-3.el7 altinity_clickhouse
-clickhouse-server.x86_64        1.1.54276-3.el7 altinity_clickhouse
-clickhouse-server-common.x86_64 1.1.54276-3.el7 altinity_clickhouse
+clickhouse-client.x86_64                18.1.0-1.el7             Altinity_clickhouse
+clickhouse-common-static.x86_64         18.1.0-1.el7             Altinity_clickhouse
+clickhouse-compressor.x86_64            1.1.54336-3.el7          Altinity_clickhouse
+clickhouse-debuginfo.x86_64             18.1.0-1.el7             Altinity_clickhouse
+clickhouse-mysql.noarch                 0.0.20180319-1           Altinity_clickhouse
+clickhouse-server.x86_64                18.1.0-1.el7             Altinity_clickhouse
+clickhouse-server-common.x86_64         18.1.0-1.el7             Altinity_clickhouse
+clickhouse-test.x86_64                  18.1.0-1.el7             Altinity_clickhouse
 ```
 
-Now let's install ClickHouse
+There are multiple packages available (new versions and old tools as well), some of the are deprecated already, so there is no need to install all of them.
+
+Now let's install ClickHouse main parts - server and client applications.
 ```bash
-sudo yum install -y 'clickhouse*'
+sudo yum install -y clickhouse-server clickhouse-client
 ```
 
 and verify it is listed as installed
@@ -76,11 +81,10 @@ and verify it is listed as installed
 ClickHouse packages should be listed as installed, something like this:
 ```bash
 Installed Packages
-clickhouse-client.x86_64        1.1.54276-3.el7 @altinity_clickhouse
-clickhouse-compressor.x86_64    1.1.54276-3.el7 @altinity_clickhouse
-clickhouse-debuginfo.x86_64     1.1.54276-3.el7 @altinity_clickhouse
-clickhouse-server.x86_64        1.1.54276-3.el7 @altinity_clickhouse
-clickhouse-server-common.x86_64 1.1.54276-3.el7 @altinity_clickhouse
+clickhouse-client.x86_64                 18.1.0-1.el7           @Altinity_clickhouse
+clickhouse-common-static.x86_64          18.1.0-1.el7           @Altinity_clickhouse
+clickhouse-server.x86_64                 18.1.0-1.el7           @Altinity_clickhouse
+clickhouse-server-common.x86_64          18.1.0-1.el7           @Altinity_clickhouse
 ```
 
 Ensure ClicKhouse server is running
@@ -88,13 +92,16 @@ Ensure ClicKhouse server is running
 sudo /etc/init.d/clickhouse-server restart
 ```
 
-And connect to it with clickhouse-client
+And connect to it with `clickhouse-client`
 ```bash
 clickhouse-client
+```
 
-ClickHouse client version 1.1.54276.
-Connecting to localhost:9000.
-Connected to ClickHouse server version 1.1.54276.
+ClickHouse server should respond, something like this:
+```bash
+ClickHouse client version 18.1.0.
+Connecting to localhost:9000 as user default.
+Connected to ClickHouse server version 18.1.54396.
 
 :)
 
