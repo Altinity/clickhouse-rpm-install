@@ -23,7 +23,7 @@
 ## Introduction
 
 All instructions in this manual were tested on Centos 6.10 and CentOS 7.5. 
-In order to install ClickHouse RPM packages from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository, we need to register it (repo) with our `yum`, making `yum` avare of additional packages installable from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse).
+In order to install ClickHouse RPM packages from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository, we need to register it (repo) with our `yum`, making `yum` aware of additional packages installable from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse).
 
 In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository description in there.
 
