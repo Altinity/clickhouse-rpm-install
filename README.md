@@ -6,7 +6,7 @@
 
   * [Introduction](#introduction)
   * [Script-based installation](#script-based-installation)
-    * [Install script](#install-script)
+    * [Install dependencies](#install-dependencies)
     * [Install packages after script](#install-packages-after-script)
   * [Manual installation](#manual-installation)
     * [Install required packages](#install-required-packages)
@@ -22,28 +22,48 @@
 
 ## Introduction
 
-All instructions in this manual were tested on Centos 6.10 and CentOS 7.5. 
+### Supported OSes
+All instructions in this manual were tested on Centos 6.10, CentOS 7.5 and Amazon Linux.
+
+**IMPORTANT for Amazon Linux users** 
+Amazon Linux is being detected as CentOS 6, while RPMs built for CentOS 7 are the best choice. So we need to explicitly install CentOS 7 RPMs
+More details further in the doc.
+
+### Introduction
+
 In order to install ClickHouse RPM packages from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository, we need to register it (repo) with our `yum`, making `yum` aware of additional packages installable from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse).
 
 In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository description in there.
 
 This can be done either [manually](#manual-installation) or via [script](#script-based-installation), provided by [packagecloud.io](https://packagecloud.io/Altinity/clickhouse). In any case, as a result, we'll have ClickHouse packages available for installation via `yum`.
 
+**IMPORTANT for Amazon Linux users** 
+Amazon Linux is being detected as CentOS 6 by the script, so we need to explicitly instruct it to use CentOS 7 repo.
+  * In case of [manual installation](#manual-installation), just use [EL7 repo file](#el7-repo-file)
+  * In case of [script-based installation](#script-based-installation), script provided by packagecloud should be explicitly instructed to use CentOS 7 repo, instead of CentOS 6 repo, which is being used by default.
+
 Let's start with script-based installation, since this approach looks like more user-friendly.
 
 ## Script-based installation
 For our convenience, [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) provides nice and user-friendly way to add repos with their script. We'll need to download and run **packagecloud**'s bash script, which will do all required steps.
 
-### Install script
+### Install dependencies
 Ensure `curl` is installed on the system
 ```bash
 sudo yum install -y curl
 ```
 
 Let's download and run installation shell-script, provided by [packagecloud.io](https://packagecloud.io/Altinity/clickhouse)
+** for CentOS 6 and 7 **
 ```bash
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo bash
 ```
+
+** for Amazon Linux **
+```bash
+curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo os=centos dist=7 bash
+```
+pay attention to `os=centos dist=7` explicitly specified
 
 ### Install packages after script
 
@@ -129,7 +149,7 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 
 #### EL6 repo file
 
-For EL6 copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
+For EL6 (**do NOT use this this Amazon Linux**) copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
 ```bash
 [altinity_clickhouse]
 name=altinity_clickhouse
@@ -156,7 +176,7 @@ metadata_expire=300
 
 #### EL7 repo file
 
-For EL7 copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
+For EL7 **and Amazon Linux** copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
 ```bash
 [altinity_clickhouse]
 name=altinity_clickhouse
