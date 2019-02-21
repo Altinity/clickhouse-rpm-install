@@ -23,7 +23,7 @@
 ## Introduction
 
 ### Supported OSes
-All instructions in this manual were tested on Centos 6.10, CentOS 7.5 and Amazon Linux.
+All instructions in this manual were tested on Centos 6.10, CentOS 7.5 and Amazon Linux 2.
 
 **IMPORTANT for Amazon Linux users** 
 Amazon Linux is being detected as CentOS 6, while RPMs built for CentOS 7 are the best choice. So we need to explicitly install CentOS 7 RPMs
@@ -39,8 +39,8 @@ This can be done either [manually](#manual-installation) or via [script](#script
 
 **IMPORTANT for Amazon Linux users** 
 Amazon Linux is being detected as CentOS 6 by the script, so we need to explicitly instruct it to use CentOS 7 repo.
-  * In case of [manual installation](#manual-installation), just use [EL7 repo file](#el7-repo-file)
-  * In case of [script-based installation](#script-based-installation), script provided by packagecloud should be explicitly instructed to use CentOS 7 repo, instead of CentOS 6 repo, which is being used by default.
+  * In case of [manual installation](#manual-installation), just use [EL7 repo file](#el7-repo-file). It is compatible with Amazon Linux
+  * In case of [script-based installation](#script-based-installation), script provided by packagecloud should be explicitly instructed to use CentOS 7 repo, instead of CentOS 6 repo, which is being used by default for Amazon Linux. More details further in the doc.
 
 Let's start with script-based installation, since this approach looks like more user-friendly.
 
@@ -59,7 +59,7 @@ Let's download and run installation shell-script, provided by [packagecloud.io](
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo bash
 ```
 
-** for Amazon Linux **
+**for Amazon Linux**
 ```bash
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo os=centos dist=7 bash
 ```
@@ -107,7 +107,7 @@ clickhouse-server.x86_64                 18.1.0-1.el7           @Altinity_clickh
 clickhouse-server-common.x86_64          18.1.0-1.el7           @Altinity_clickhouse
 ```
 
-Ensure ClicKhouse server is running
+Ensure ClickHouse server is running
 ```bash
 sudo /etc/init.d/clickhouse-server restart
 ```
@@ -149,7 +149,7 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 
 #### EL6 repo file
 
-For EL6 (**do NOT use this this Amazon Linux**) copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
+For EL6 (**do NOT use with Amazon Linux**) copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
 ```bash
 [altinity_clickhouse]
 name=altinity_clickhouse
