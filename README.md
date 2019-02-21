@@ -54,7 +54,8 @@ sudo yum install -y curl
 ```
 
 Let's download and run installation shell-script, provided by [packagecloud.io](https://packagecloud.io/Altinity/clickhouse)
-** for CentOS 6 and 7 **
+
+**for CentOS 6 and 7**
 ```bash
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo bash
 ```
