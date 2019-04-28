@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+  * [What is this](#what-is-this)
   * [Introduction](#introduction)
   * [Script-based installation](#script-based-installation)
     * [Install dependencies](#install-dependencies)
@@ -19,6 +20,10 @@
 
 ------
 
+## What is this
+This is a detailed explanation on how to install ready-to-use ClickHouse RPMs from Altinity's repo.
+This is **not** an instructions on how to build your own hand-made RPMs.
+However, if you need to build your own RPMs, there is a [detailed explanation](https://github.com/Altininty/clickhouse-rpm) on how to build ClickHouse RPMs from sources with the help of Altinity's [RPM builder](https://github.com/Altinity/clickhouse-rpm)
 
 ## Introduction
 
