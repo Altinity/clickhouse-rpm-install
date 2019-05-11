@@ -158,7 +158,6 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 #### EL6 repo file
 
 EL6 (**do NOT use with Amazon Linux**) ready-to-copy+paste command.
-
 (It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file):
 ```bash
 cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
@@ -189,7 +188,6 @@ EOF
 #### EL7 repo file
 
 EL7 **and Amazon Linux** ready-to-copy+paste command. 
-
 (It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file):
 ```bash
 cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
