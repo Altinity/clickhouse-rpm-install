@@ -144,12 +144,13 @@ We are all done!
 Let's add Altinity's [repo][pack_alt_repo] manually
 
 ### Install required packages
-We'll need two packages installed beforehands:
+We'll need the following packages installed beforehands:
   * `pygpgme` - helps handling gpg-signatures
   * `yum-utils` - contains tools for handling source RPMs
+  * `coreutils` - contains core utils and we'll need `tee` command later
 
 ```bash
-sudo yum install -y pygpgme yum-utils
+sudo yum install -y pygpgme yum-utils coreutils
 ```
 
 ### Create required files
@@ -157,8 +158,8 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 
 #### EL6 repo file
 
-EL6 (**do NOT use with Amazon Linux**) ready-to-copy+paste command. It writes \
-`/etc/yum.repos.d/altinity_clickhouse.repo` file:
+EL6 (**do NOT use with Amazon Linux**) ready-to-copy+paste command to create `yum`'s repo config file.\
+It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file:
 ```bash
 cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
@@ -187,8 +188,8 @@ EOF
 
 #### EL7 repo file
 
-EL7 **and Amazon Linux** ready-to-copy+paste command. It writes \
-`/etc/yum.repos.d/altinity_clickhouse.repo` file:
+EL7 **and Amazon Linux** ready-to-copy+paste command to create `yum`'s repo config file. \
+It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file:
 ```bash
 cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
