@@ -1,4 +1,4 @@
-# ClickHouse RPM packages installation from packagecloud.io
+# ClickHouse RPM packages installation from Altinity's [repo][pack_alt_repo] located on [packagecloud.io](https://packagecloud.io)
 
 ------
 
@@ -21,9 +21,9 @@
 ------
 
 ## What is this
-This is a detailed explanation on how to install ready-to-use ClickHouse RPMs from Altinity's [repo](https://packagecloud.io/Altinity/clickhouse).
+This is a detailed explanation on how to install ready-to-use ClickHouse RPMs from Altinity's [repo][pack_alt_repo] located on [packagecloud.io][pack_alt_repo].
 This is **not** an instructions on how to build your own hand-made RPMs.
-However, if you need to build your own RPMs, there is a [detailed explanation](https://github.com/Altinity/clickhouse-rpm) on how to build ClickHouse RPMs from sources with the help of Altinity's [RPM builder](https://github.com/Altinity/clickhouse-rpm)
+However, if you need to build your own RPMs, there is a [detailed explanation][alt_rpm_builder_repo] on how to build ClickHouse RPMs from sources with the help of Altinity's [RPM builder][alt_rpm_builder_repo]
 
 ## Introduction
 
@@ -36,11 +36,11 @@ More details further in the doc.
 
 ### Introduction
 
-In order to install ClickHouse RPM packages from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository, we need to register it (repo) with our `yum`, making `yum` aware of additional packages installable from [packagecloud.io](https://packagecloud.io/Altinity/clickhouse).
+In order to install ClickHouse RPM packages from Altinity's [repository][pack_alt_repo], we need to register it (repo) with our `yum`, making `yum` aware of additional packages installable from [external source][pack_alt_repo].
 
-In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repository description in there.
+In general, repositories are listed in `/etc/yum.repos.d` folder, so we need to add Altinity's [repository][pack_alt_repo] description in there.
 
-This can be done either [manually](#manual-installation) or via [script](#script-based-installation), provided by [packagecloud.io](https://packagecloud.io/Altinity/clickhouse). In any case, as a result, we'll have ClickHouse packages available for installation via `yum`.
+This can be done either [manually](#manual-installation) or via [script](#script-based-installation), provided by [packagecloud.io][pack_alt_repo]. In any case, as a result, we'll have ClickHouse packages available for installation via `yum`.
 
 **IMPORTANT for Amazon Linux users** 
 Amazon Linux is being detected as CentOS 6 by the script, so we need to explicitly instruct it to use CentOS 7 repo.
@@ -50,7 +50,7 @@ Amazon Linux is being detected as CentOS 6 by the script, so we need to explicit
 Let's start with script-based installation, since this approach looks like more user-friendly.
 
 ## Script-based installation
-For our convenience, [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) provides nice and user-friendly way to add repos with their script. We'll need to download and run **packagecloud**'s bash script, which will do all required steps.
+For our convenience, [packagecloud.io][pack_alt_repo] provides nice and user-friendly way to add repos with their script. We'll need to download and run **packagecloud**'s bash script, which will do all required steps.
 
 ### Install dependencies
 Ensure `curl` is installed on the system
@@ -58,7 +58,7 @@ Ensure `curl` is installed on the system
 sudo yum install -y curl
 ```
 
-Let's download and run installation shell-script, provided by [packagecloud.io](https://packagecloud.io/Altinity/clickhouse)
+Let's download and run installation shell-script, provided by [packagecloud.io][pack_alt_repo]
 
 **for CentOS 6 and 7**
 ```bash
@@ -139,7 +139,7 @@ We are all done!
 
 ## Manual installation
 
-Let's add [packagecloud.io](https://packagecloud.io/Altinity/clickhouse) repo manually
+Let's add Altinity's [repo][pack_alt_repo] manually
 
 ### Install required packages
 We'll need two packages installed beforehands:
@@ -221,4 +221,6 @@ Packages can be installed the same way as in section [Install packages after scr
 ## Conclusion
 Now we have ClickHouse **RPM** packages available for easy installation.
 
+[pack_alt_repo]: https://packagecloud.io/Altinity/clickhouse
+[alt_rpm_builder_repo]: https://github.com/Altinity/clickhouse-rpm
 
