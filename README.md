@@ -157,8 +157,9 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 
 #### EL6 repo file
 
-For EL6 (**do NOT use with Amazon Linux**) copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
+EL6 (**do NOT use with Amazon Linux**) ready-to-copy+paste command (it writes `/etc/yum.repos.d/altinity_clickhouse.repo` file):
 ```bash
+cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
 name=altinity_clickhouse
 baseurl=https://packagecloud.io/altinity/clickhouse/el/6/$basearch
@@ -180,12 +181,14 @@ gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
+EOF
 ```
 
 #### EL7 repo file
 
-For EL7 **and Amazon Linux** copy+paste into `/etc/yum.repos.d/altinity_clickhouse.repo` 
+EL7 **and Amazon Linux** ready-to-copy+paste command (it writes `/etc/yum.repos.d/altinity_clickhouse.repo` file):
 ```bash
+cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
 name=altinity_clickhouse
 baseurl=https://packagecloud.io/altinity/clickhouse/el/7/$basearch
@@ -207,6 +210,7 @@ gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
+EOF
 ```
 
 ### Update cache
