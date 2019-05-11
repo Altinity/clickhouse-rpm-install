@@ -50,7 +50,7 @@ Amazon Linux is being detected as CentOS 6 by the script, so we need to explicit
 Let's start with script-based installation, since this approach looks like more user-friendly.
 
 ## Script-based installation
-For our convenience, [packagecloud.io][pack_alt_repo] provides nice and user-friendly way to add repos with their script. We'll need to download and run **packagecloud**'s bash script, which will do all required steps.
+For our convenience, [packagecloud.io][pack_alt_repo] provides nice and user-friendly way to add repos with their [script][pack_rpm_script]. We'll need to download and run **packagecloud**'s [bash script][pack_rpm_script], which will do all required steps.
 
 ### Install dependencies
 Ensure `curl` is installed on the system
@@ -58,7 +58,7 @@ Ensure `curl` is installed on the system
 sudo yum install -y curl
 ```
 
-Let's download and run installation shell-script, provided by [packagecloud.io][pack_alt_repo]
+Let's download and run installation [shell-script][pack_rpm_script], provided by [packagecloud.io][pack_rpm_script]
 
 **for CentOS 6 and 7**
 ```bash
@@ -69,7 +69,9 @@ curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.
 ```bash
 curl -s https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh | sudo os=centos dist=7 bash
 ```
-pay attention to `os=centos dist=7` explicitly specified
+pay attention to `os=centos dist=7` explicitly specified.
+
+At this point we have RPM packages ready to install.
 
 ### Install packages after script
 
@@ -222,5 +224,6 @@ Packages can be installed the same way as in section [Install packages after scr
 Now we have ClickHouse **RPM** packages available for easy installation.
 
 [pack_alt_repo]: https://packagecloud.io/Altinity/clickhouse
+[pack_rpm_script]: https://packagecloud.io/Altinity/clickhouse/install#bash-rpm
 [alt_rpm_builder_repo]: https://github.com/Altinity/clickhouse-rpm
 
