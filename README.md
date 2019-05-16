@@ -151,9 +151,10 @@ We'll need the following packages installed beforehands:
   * `pygpgme` - helps handling gpg-signatures
   * `yum-utils` - contains tools for handling source RPMs
   * `coreutils` - contains core utils and we'll need `tee` command later
+  * `epel-release` - contains ClickHouse test package dependencies
 
 ```bash
-sudo yum install -y pygpgme yum-utils coreutils
+sudo yum install -y pygpgme yum-utils coreutils epel-release
 ```
 
 ### Create required files
