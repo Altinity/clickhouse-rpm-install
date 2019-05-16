@@ -53,9 +53,12 @@ Let's start with script-based installation, since this approach looks like more 
 For our convenience, [packagecloud.io][pack_alt_repo] provides nice and user-friendly way to add repos with their [script][pack_rpm_script]. We'll need to download and run **packagecloud**'s [bash script][pack_rpm_script], which will do all required steps.
 
 ### Install dependencies
+Instllation process requires `curl` in order to download packages. Also ClickHouse test package has some dependencies in EPEL, so `epel-release` has to be installed as well, in case you'd like to install ClicKhouse test package
 Ensure `curl` is installed on the system
 ```bash
 sudo yum install -y curl
+# in case test package would be installed, add epel-release
+sudo yum install -y epel-release
 ```
 
 Let's download and run installation [shell-script][pack_rpm_script], provided by [packagecloud.io][pack_rpm_script]
