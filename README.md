@@ -109,7 +109,7 @@ sudo yum install -y clickhouse-server clickhouse-client
 
 However, sometimer we'd like to install specific version of ClickHouse.
 #### Install specific ClickHouse version
-1. For example, in case we'd like to install latest version of `19.11.X.Y` family, we can list available latest `19.11.*` packages
+- For example, in case we'd like to install latest version of `19.11.X.Y` family, we can list available latest `19.11.*` packages
 ```bash
 sudo yum list 'clickhouse*19.11.*'
 ```
@@ -123,7 +123,7 @@ clickhouse-server.x86_64         19.11.9.52-1.el7
 clickhouse-server-common.x86_64  19.11.9.52-1.el7
 clickhouse-test.x86_64           19.11.9.52-1.el7
 ```
-1. Or, for example, we'd like to see all available versions of `19.11.X.Y` family, then select preferred version out of availbale for installation:
+- Or, for example, we'd like to see all available versions of `19.11.X.Y` family, then select preferred version out of availbale for installation:
 ```bash
 sudo yum list 'clickhouse*19.11.*' --showduplicates
 ```
@@ -144,7 +144,7 @@ clickhouse-common-static.x86_64  19.11.6.31-1.el7
 ...
 and more
 ```
-1. Now, we have picked up specific version (out of available) - let's install it:
+- Now, we have picked up specific version (out of available) - let's install it:
 ```bash
 sudo yum install -y clickhouse-server-19.11.7.40 clickhouse-client-19.11.7.40
 ```
