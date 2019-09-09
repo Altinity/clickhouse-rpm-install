@@ -87,22 +87,68 @@ sudo yum list 'clickhouse*'
 ClickHouse packages should be listed as available, something like this:
 ``` bash
 Available Packages
-clickhouse-client.x86_64                18.1.0-1.el7             Altinity_clickhouse
-clickhouse-common-static.x86_64         18.1.0-1.el7             Altinity_clickhouse
-clickhouse-compressor.x86_64            1.1.54336-3.el7          Altinity_clickhouse
-clickhouse-debuginfo.x86_64             18.1.0-1.el7             Altinity_clickhouse
-clickhouse-mysql.noarch                 0.0.20180319-1           Altinity_clickhouse
-clickhouse-server.x86_64                18.1.0-1.el7             Altinity_clickhouse
-clickhouse-server-common.x86_64         18.1.0-1.el7             Altinity_clickhouse
-clickhouse-test.x86_64                  18.1.0-1.el7             Altinity_clickhouse
+clickhouse-client.x86_64            19.13.3.26-1.el7      Altinity_clickhouse
+clickhouse-common-static.x86_64     19.13.3.26-1.el7      Altinity_clickhouse
+clickhouse-compressor.x86_64        1.1.54336-3.el7       Altinity_clickhouse
+clickhouse-debuginfo.x86_64         19.13.3.26-1.el7      Altinity_clickhouse
+clickhouse-odbc.x86_64              1.0.0.20190611-1      Altinity_clickhouse
+clickhouse-server.x86_64            19.13.3.26-1.el7      Altinity_clickhouse
+clickhouse-server-common.x86_64     19.13.3.26-1.el7      Altinity_clickhouse
+clickhouse-test.x86_64              19.13.3.26-1.el7      Altinity_clickhouse
 ```
 
 There are multiple packages available (new versions and old tools as well), some of them are deprecated already, so there is no need to install all available RPMs.
 
 Now let's install ClickHouse main parts - server and client applications.
+
+#### Install latest ClickHouse version
+In case we'd like to just install latest ClickHouse (it is so in most cases), we can simply install `clickhouse-server` and `clickhouse-client` as following:
 ```bash
 sudo yum install -y clickhouse-server clickhouse-client
 ```
+
+However, sometimer we'd like to install specific version of ClickHouse.
+#### Install specific ClickHouse version
+1. For example, in case we'd like to install latest version of `19.11.X.Y` family, we can list available latest `19.11.*` packages
+```bash
+sudo yum list 'clickhouse*19.11.*'
+```
+We'll see packages of one proposed version (latest) only:
+```text
+Available Packages
+clickhouse-client.x86_64         19.11.9.52-1.el7
+clickhouse-common-static.x86_64  19.11.9.52-1.el7
+clickhouse-debuginfo.x86_64      19.11.9.52-1.el7
+clickhouse-server.x86_64         19.11.9.52-1.el7
+clickhouse-server-common.x86_64  19.11.9.52-1.el7
+clickhouse-test.x86_64           19.11.9.52-1.el7
+```
+1. Or, for example, we'd like to see all available versions of `19.11.X.Y` family, then select preferred version out of availbale for installation:
+```bash
+sudo yum list 'clickhouse*19.11.*' --showduplicates
+```
+We'll see all available package versions from `19.11.X.Y` family:
+```text
+Available Packages
+clickhouse-client.x86_64         19.11.2.7-1.el7
+clickhouse-client.x86_64         19.11.3.11-1.el7
+clickhouse-client.x86_64         19.11.4.24-1.el7
+clickhouse-client.x86_64         19.11.6.31-1.el7
+clickhouse-client.x86_64         19.11.7.40-1.el7
+clickhouse-client.x86_64         19.11.8.46-1.el7
+clickhouse-client.x86_64         19.11.9.52-1.el7
+clickhouse-common-static.x86_64  19.11.2.7-1.el7
+clickhouse-common-static.x86_64  19.11.3.11-1.el7
+clickhouse-common-static.x86_64  19.11.4.24-1.el7
+clickhouse-common-static.x86_64  19.11.6.31-1.el7
+...
+and more
+```
+1. Now, we have picked up specific version (out of available) - let's install it:
+```bash
+sudo yum install -y clickhouse-server-19.11.7.40 clickhouse-client-19.11.7.40
+```
+
 
 and verify it is listed as installed
 ```bash
@@ -112,10 +158,10 @@ and verify it is listed as installed
 ClickHouse packages should be listed as installed, something like this:
 ```bash
 Installed Packages
-clickhouse-client.x86_64                 18.1.0-1.el7           @Altinity_clickhouse
-clickhouse-common-static.x86_64          18.1.0-1.el7           @Altinity_clickhouse
-clickhouse-server.x86_64                 18.1.0-1.el7           @Altinity_clickhouse
-clickhouse-server-common.x86_64          18.1.0-1.el7           @Altinity_clickhouse
+clickhouse-client.x86_64                 19.11.7.40-1.el7           @Altinity_clickhouse
+clickhouse-common-static.x86_64          19.11.7.40-1.el7           @Altinity_clickhouse
+clickhouse-server.x86_64                 19.11.7.40-1.el7           @Altinity_clickhouse
+clickhouse-server-common.x86_64          19.11.7.40-1.el7           @Altinity_clickhouse
 ```
 
 Ensure ClickHouse server is running
@@ -130,12 +176,11 @@ clickhouse-client
 
 ClickHouse server should respond, something like this:
 ```bash
-ClickHouse client version 18.1.0.
+ClickHouse client version 19.11.7.40.
 Connecting to localhost:9000 as user default.
-Connected to ClickHouse server version 18.1.54396.
+Connected to ClickHouse server version 19.11.7 revision 54423.
 
-:)
-
+ip-172-31-37-226.ec2.internal :)
 ```
 
 Well, all looks fine and ClickHouse installed from **RPM** packages!
