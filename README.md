@@ -111,6 +111,7 @@ However, sometimer we'd like to install specific version of ClickHouse.
 #### Install specific ClickHouse version
 We can either just want to install latest version from specific branch, or we may know what ClickHouse version we'd like to install exactly, or we can look over availbale (older) versions available for installation. 
 These cases are little bit different, let's take a look on both of them.
+
 **Select latest version from specific branch**
 
 In case we'd like to install latest version of `19.11.X.Y` family, we can list available latest `19.11.*` packages
