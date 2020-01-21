@@ -28,7 +28,7 @@ However, if you need to build your own RPMs, there is a [detailed explanation][a
 ## Introduction
 
 ### `general` and `stable` repos
-Altinity provides two repos to use:
+Altinity provides two repos:
 * `general` [repo][pack_alt_repo] with general ClickHouse releases.
 * `stable` [repo][pack_alt_stable_repo] with Altinity Stable ClickHouse releases.
 
@@ -61,7 +61,8 @@ We'll need to download and run **packagecloud**'s `shell script`, which will do 
 
 ### Install dependencies
 Installation process requires `curl` in order to download packages. 
-Also ClickHouse test package has some dependencies in EPEL, so `epel-release` has to be installed as well, in case you'd like to install ClicKhouse test package
+Also ClickHouse test package has some dependencies in EPEL, so `epel-release` has to be installed as well, in case you'd like to install ClickHouse test package.
+
 Ensure `curl` is installed on the system
 ```bash
 sudo yum install -y curl
@@ -70,7 +71,7 @@ sudo yum install -y epel-release
 ```
 
 Let's download and run installation `shell script`, provided by `packagecloud.io`.
-First of all, we need to point what script (from `general` or `stable` repo) we'll be uding:
+First of all, we need to point what script (from `general` or `stable` repo) we'll be using:
 
 ```bash
 # For general repo use this URL
@@ -92,7 +93,7 @@ curl -s "${SCRIPT_URL}" | sudo os=centos dist=7 bash
 ```
 pay attention to `os=centos dist=7` explicitly specified.
 
-At this point we have RPM packages ready to install.
+At this point we have `yam` avare of additional RPM packages available and we are ready to install ClickHouse.
 
 ### Install packages
 
