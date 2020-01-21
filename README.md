@@ -61,9 +61,15 @@ We'll need to download and run **packagecloud**'s `shell script`, which will do 
 
 ### Install dependencies
 Installation process requires `curl` in order to download packages. 
-Also ClickHouse test package has some dependencies in EPEL, so `epel-release` has to be installed as well, in case you'd like to install ClickHouse test package.
+ClickHouse test package has some dependencies in EPEL, so `epel-release` has to be installed as well, in case you'd like to install ClickHouse test package.
+Some installations do not have `sudo` installed, so we need to ensure it is availbale also.
 
-Ensure `curl` is installed on the system
+Ensure `sudo` is available:
+```bash
+yum install -y sudo
+```
+
+Ensure `curl` is available:
 ```bash
 sudo yum install -y curl
 # in case test package would be installed, add epel-release
@@ -74,10 +80,10 @@ Let's download and run installation `shell script`, provided by `packagecloud.io
 First of all, we need to point what script (from `general` or `stable` repo) we'll be using:
 
 ```bash
-# For general repo use this URL
+# For 'general' repo use this URL:
 SCRIPT_URL="https://packagecloud.io/install/repositories/altinity/clickhouse/script.rpm.sh"
 
-# For stable repo use this URL
+# For 'stable' repo use this URL:
 SCRIPT_URL="https://packagecloud.io/install/repositories/altinity/clickhouse-altinity-stable/script.rpm.sh"
 ```
 
