@@ -221,7 +221,7 @@ We are all done!
 
 ## Manual installation
 
-Let's add Altinity's [repo][pack_alt_repo] manually
+Let's add any of Altinity's repos - [general][pack_alt_repo] or [stable][pack_alt_stable_repo] manually
 
 ### Install required packages
 We'll need the following packages installed beforehands:
@@ -235,32 +235,41 @@ sudo yum install -y pygpgme yum-utils coreutils epel-release
 ```
 
 ### Create required files
-Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altinity_clickhouse.repo` Depending on what CentOS version you are running you may need files for EL 6 or 7 version
+Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altinity_clickhouse.repo`.
+Depending on what CentOS version you are running you may need files for EL 6 or 7 version.
+
+```bash
+# For general repo use this URL
+BASE_URL="https://packagecloud.io/altinity/clickhouse"
+
+# For stable repo use this URL
+BASE_URL="https://packagecloud.io/altinity/clickhouse-altinity-stable"
+```
 
 #### EL6 repo file
 
 EL6 (**do NOT use with Amazon Linux**) ready-to-copy+paste command to create `yum`'s repo config file.\
 It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file:
 ```bash
-cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
+cat <<EOF | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
 name=altinity_clickhouse
-baseurl=https://packagecloud.io/altinity/clickhouse/el/6/$basearch
+baseurl=${BASE_URL}/el/6/\$basearch
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
-gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
+gpgkey=${BASE_URL}/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 
 [altinity_clickhouse-source]
 name=altinity_clickhouse-source
-baseurl=https://packagecloud.io/altinity/clickhouse/el/6/SRPMS
+baseurl=${BASE_URL}/el/6/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
-gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
+gpgkey=${BASE_URL}/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -272,25 +281,25 @@ EOF
 EL7 **and Amazon Linux** ready-to-copy+paste command to create `yum`'s repo config file. \
 It writes `/etc/yum.repos.d/altinity_clickhouse.repo` file:
 ```bash
-cat <<"EOF" | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
+cat <<EOF | sudo tee /etc/yum.repos.d/altinity_clickhouse.repo
 [altinity_clickhouse]
 name=altinity_clickhouse
-baseurl=https://packagecloud.io/altinity/clickhouse/el/7/$basearch
+baseurl=${BASE_URL}/el/7/\$basearch
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
-gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
+gpgkey=${BASE_URL}/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 
 [altinity_clickhouse-source]
 name=altinity_clickhouse-source
-baseurl=https://packagecloud.io/altinity/clickhouse/el/7/SRPMS
+baseurl=${BASE_URL}/el/7/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
-gpgkey=https://packagecloud.io/altinity/clickhouse/gpgkey
+gpgkey=${BASE_URL}/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
