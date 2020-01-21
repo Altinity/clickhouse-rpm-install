@@ -87,13 +87,14 @@ SCRIPT_URL="https://packagecloud.io/install/repositories/altinity/clickhouse/scr
 SCRIPT_URL="https://packagecloud.io/install/repositories/altinity/clickhouse-altinity-stable/script.rpm.sh"
 ```
 
-Now we can register Altiniry's repo in the system by running appropriate script:
-**for CentOS 6 and 7**
+Now we can register Altiniry's repo in the system by running appropriate script.
+
+**for CentOS 6 and 7**:
 ```bash
 curl -s "${SCRIPT_URL}" | sudo bash
 ```
 
-**for Amazon Linux**
+**for Amazon Linux**:
 ```bash
 curl -s "${SCRIPT_URL}" | sudo os=centos dist=7 bash
 ```
@@ -134,7 +135,7 @@ In case we'd like to just install latest ClickHouse (it is so in most cases), we
 sudo yum install -y clickhouse-server clickhouse-client
 ```
 
-However, sometimer we'd like to install specific version of ClickHouse.
+However, sometimes we'd like to install specific version of ClickHouse.
 #### Install specific ClickHouse version
 We can either just want to install latest version from specific branch, or we may know what ClickHouse version we'd like to install exactly, or we can look over availbale (older) versions available for installation. 
 These cases are little bit different, let's take a look on both of them.
@@ -245,10 +246,10 @@ Now let's create `yum`'s repository configuration file: `/etc/yum.repos.d/altini
 Depending on what CentOS version you are running you may need files for EL 6 or 7 version.
 
 ```bash
-# For general repo use this URL
+# For 'general' repo use this URL
 BASE_URL="https://packagecloud.io/altinity/clickhouse"
 
-# For stable repo use this URL
+# For 'stable' repo use this URL
 BASE_URL="https://packagecloud.io/altinity/clickhouse-altinity-stable"
 ```
 
@@ -320,7 +321,7 @@ sudo yum -q makecache -y --disablerepo='*' --enablerepo='altinity*'
 ```
 
 ### Install packages manually
-Packages can be installed the same way as in section [Install packages after script](#install-packages-after-script)
+Packages can be installed the same way as in section [Install packages](#install-packages) after script-based installation.
 
 
 ## Conclusion
