@@ -93,7 +93,9 @@ curl -s "${SCRIPT_URL}" | sudo os=centos dist=7 bash
 ```
 pay attention to `os=centos dist=7` explicitly specified.
 
-At this point we have `yam` avare of additional RPM packages available and we are ready to install ClickHouse.
+At this point we have `yum` aware of additional RPM packages available. 
+
+We are ready to install ClickHouse.
 
 ### Install packages
 
