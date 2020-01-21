@@ -308,9 +308,9 @@ EOF
 
 ### Update cache
 
-After repo files created, let's update `yum`'s cache with packges from newly added `altinity_clickhouse` repo
+After repo files created, let's update `yum`'s cache with packges from newly added repo
 ```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='altinity_clickhouse'
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='altinity*'
 ```
 
 ### Install packages manually
